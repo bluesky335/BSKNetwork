@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BSKNetwork_Example' do
+  pod 'BSKNetwork', :path => '../'
+
+  target 'BSKNetwork_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
