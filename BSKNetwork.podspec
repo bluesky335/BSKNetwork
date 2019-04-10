@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BSKNetwork'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = '一个Alamofire的封装'
 s.swift_version      = '4.2'
 
