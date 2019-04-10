@@ -1,0 +1,16 @@
+PODS:
+  - BSKNetwork (0.1.0)
+
+DEPENDENCIES:
+  - BSKNetwork (from `../`)
+
+EXTERNAL SOURCES:
+  BSKNetwork:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BSKNetwork: 811dd8444b695ac908686d41c28f956671e5bc82
+
+PODFILE CHECKSUM: bff18006eca1a6003177ac7f9fca4695e1811cde
+
+COCOAPODS: 1.6.0.beta.2

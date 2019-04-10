@@ -9,7 +9,8 @@
 Pod::Spec.new do |s|
   s.name             = 'BSKNetwork'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of BSKNetwork.'
+  s.summary          = '一个Alamofire的封装'
+s.swift_version      = '4.2'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +19,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+对Alamofire的一个封装，更方便的添加和管理API接口
                        DESC
 
   s.homepage         = 'https://github.com/bluesky335/BSKNetwork'
