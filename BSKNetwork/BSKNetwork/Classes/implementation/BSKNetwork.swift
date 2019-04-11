@@ -30,7 +30,7 @@ public class BSKNetwork<Type: Codable> {
                                   completeHandler: @escaping (Result<Type>) -> Void,
                                   queue: DispatchQueue? = nil,
                                   file: String = #file,
-                                  line: Int = #line) {
+                                  line: Int = #line) -> DataRequest {
         let url = Server.url(With: API)
         let parameters = Server.parameterSigner.sign(parameters: API.parameters)
         let request = Alamofire.request(url, method: API.action, parameters: parameters, headers: API.headers)
@@ -108,5 +108,6 @@ public class BSKNetwork<Type: Codable> {
                 }
             }
         }
+        return request
     }
 }
