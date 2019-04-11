@@ -1,4 +1,8 @@
 use_frameworks!
+platform :ios, '9.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://gitlab.obplay.cn:18080/BlueSky/privatecocoapodsrepo.git'
 
 target 'BSKNetwork_Example' do
   pod 'BSKNetwork', :path => '../'

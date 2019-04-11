@@ -1,0 +1,6 @@
+module Pods_BSKNetwork {
+  umbrella header "Pods-BSKNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}

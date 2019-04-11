@@ -1,12 +1,10 @@
 PODS:
   - Alamofire (4.8.2)
   - BSKConsole (0.1.0)
-  - BSKNetwork (0.1.0):
-    - Alamofire (~> 4.8.2)
-    - BSKConsole (= 0.1.0)
 
 DEPENDENCIES:
-  - BSKNetwork (from `../`)
+  - Alamofire (~> 4.8.2)
+  - BSKConsole (= 0.1.0)
 
 SPEC REPOS:
   http://gitlab.obplay.cn:18080/BlueSky/privatecocoapodsrepo.git:
@@ -14,15 +12,10 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
 
-EXTERNAL SOURCES:
-  BSKNetwork:
-    :path: "../"
-
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BSKConsole: 85cc0ce59f0c1c5c770b0d6e9f140d108699e865
-  BSKNetwork: c319dc083dd9a77505f9bd07fd6eb822065c48eb
 
-PODFILE CHECKSUM: 931b937013c05f3c10a61e8ab4eb652b641dc2aa
+PODFILE CHECKSUM: 27bac67deb5206d473e2a2c32b95742f2e0415eb
 
 COCOAPODS: 1.6.0.beta.2

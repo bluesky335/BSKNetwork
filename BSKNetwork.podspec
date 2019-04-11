@@ -29,9 +29,9 @@ s.swift_version      = '4.2'
   s.source           = { :git => 'https://github.com/bluesky335/BSKNetwork.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'BSKNetwork/Classes/**/*'
+  s.source_files = 'BSKNetwork/BSKNetwork/Classes/**/*'
   
   # s.resource_bundles = {
   #   'BSKNetwork' => ['BSKNetwork/Assets/*.png']
@@ -39,5 +39,6 @@ s.swift_version      = '4.2'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'Alamofire', '~> 4.8.2'
+   s.dependency 'BSKConsole', '= 0.1.0'
 end
