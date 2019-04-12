@@ -25,12 +25,14 @@ public class BSKNetworkConfig {
 public class BSKNetwork<Type: Codable> {
     private init() {}
 
+    @discardableResult
     public class func request(Server: ServerProtocol = BSKNetworkConfig.defaultServer,
                                   API: APIPath,
                                   completeHandler: @escaping (Result<Type>) -> Void,
                                   queue: DispatchQueue? = nil,
                                   file: String = #file,
                                   line: Int = #line) -> DataRequest {
+        
         let url = Server.url(With: API)
         let parameters = Server.parameterSigner.sign(parameters: API.parameters)
         let request = Alamofire.request(url, method: API.action, parameters: parameters, headers: API.headers)

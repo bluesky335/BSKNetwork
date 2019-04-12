@@ -9,32 +9,7 @@
 import UIKit
 import Alamofire
 
-private protocol BSKErrorProtocol:Error {
-    var errorCode: Int{get}
-    var errorMessage: String{get}
-}
-
-
-public extension Error {
-    public var code:Int{
-        if let cmerror = self as? BSKErrorProtocol {
-            return cmerror.errorCode
-        }else{
-            return -1
-        }
-    }
-    public var message:String {
-        if let cmerror = self as? BSKErrorProtocol {
-            return cmerror.errorMessage
-        }else{
-        return self.localizedDescription
-        }
-    }
-}
-
-
-
-public struct BSKNetworkError:BSKErrorProtocol,CustomStringConvertible {
+public struct BSKNetworkError:Error,CustomStringConvertible {
 
     public let URL: String
     public let parameters: [String : Any]?
@@ -45,7 +20,7 @@ public struct BSKNetworkError:BSKErrorProtocol,CustomStringConvertible {
     public let errorMessage: String
     public let requestType:HTTPMethod
 
-    /// 初始化一个错误(本地类型转换的错误或者服务器接口返回数据格式不正确等产生的非正常错误)
+    /// 初始化一个错误
     ///
     /// - Parameters:
     ///   - message: 错误信息
