@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             case .success(let module):
                 BSKConsole.log(module?.name ?? "nill")
             case .fail(let error):
-                BSKConsole.error(error.message)
+                BSKConsole.error(error.localizedDescription)
             }
         })
         // Do any additional setup after loading the view, typically from a nib.
