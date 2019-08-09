@@ -12,14 +12,11 @@ import BSKConsole
 
 class BaseServerResault<T:Codable>:Codable {
     var code:Int
-    var message:String
+    var message:String? = nil
     var data:T
-    init(code:Int,message:String,data:T) {
-        self.code = code
-        self.message = message
-        self.data = data
-    }
+    
 }
+
 
 //class BaseServerResault2:Codable {
 //    var code:Int = 0
@@ -37,18 +34,20 @@ class MyHandler: BSKResultHandler {
     override func handle<R:Codable>(result: Any, type: R.Type, server: ServerProtocol, path: APIPath) throws -> R {
         
         let model = try BaseServerResault<R>.decode(from: result)
+        let info = [
+            "URL":server.url(With: path),
+            "action":"\(path.action)",
+            "header":"\(String(describing: path.headers))",
+            "parameters":"\(String(describing: path.parameters))"
+        ]
+        
         if model.code != 200 {
-            let info = [
-                "URL":server.url(With: path),
-                "action":"\(path.action)",
-                "header":"\(String(describing: path.headers))",
-                "parameters":"\(String(describing: path.parameters))"
-            ]
-            throw NSError(domain: model.message , code: model.code, userInfo: info) as Error
+            throw NSError(domain: model.message ?? "no Message" , code: model.code, userInfo: info) as Error
         }
-        
-        return model.data
-        
+        if let data = model.data as? R {
+            return data
+        }
+        throw NSError(domain: "数据为空" , code: model.code, userInfo: info) as Error
     }
 }
 
@@ -65,8 +64,10 @@ class ViewController: UIViewController {
             a in
             switch a {
             case .success(let module):
+                BSKConsole.log("网络请求成功")
                 BSKConsole.log(module?.name ?? "nill")
             case .fail(let error):
+                BSKConsole.error("网络请求失败")
                 BSKConsole.error(error.localizedDescription)
             }
         })

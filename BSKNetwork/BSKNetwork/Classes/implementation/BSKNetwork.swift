@@ -8,8 +8,8 @@ import BSKConsole
 import Foundation
 
 public enum Result<ResultType> {
-    case success(ResultType)
-    case fail(Error)
+    case success(data:ResultType)
+    case fail(error:Error)
 }
 
 public class BSKNetworkConfig {
@@ -42,20 +42,20 @@ public class BSKNetwork<Type: Codable> {
                 if let error = response.error {
                     let netError = BSKNetworkError(message: "网络请求失败", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError: error, responseValue: response.value)
                     BSKConsole.error(netError, file: file, line: line)
-                    completeHandler(Result.fail(netError))
+                    completeHandler(Result.fail(error:netError))
                 } else {
                     if let str = response.value {
                         if let result = str as? Type {
-                            completeHandler(Result.success(result))
+                            completeHandler(Result.success(data:result))
                         } else {
                             let netError = BSKNetworkError(message: "API要求的返回类型是 Text/String 但BSKNetwork<Type>泛型给定的类型是 \(String(describing: Type.self))", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError: nil, responseValue: response.value)
                             BSKConsole.error(netError, file: file, line: line)
-                            completeHandler(Result.fail(netError))
+                            completeHandler(Result.fail(error:netError))
                         }
                     } else {
                         let netError = BSKNetworkError(message: "返回的数据为空", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError: nil, responseValue: response.value)
                         BSKConsole.error(netError, file: file, line: line)
-                        completeHandler(Result.fail(netError))
+                        completeHandler(Result.fail(error:netError))
                     }
                 }
             })
@@ -65,23 +65,23 @@ public class BSKNetwork<Type: Codable> {
                     let netError = BSKNetworkError(message: "网络请求失败", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError:
                         error, responseValue: response.value)
                     BSKConsole.error(netError, file: file, line: line)
-                    completeHandler(Result.fail(netError))
+                    completeHandler(Result.fail(error:netError))
                 } else {
                     if let value = response.value, !(value is NSNull) {
                         do {
                             let resultValue = try Server.resaultHandler.handle(result: value, type: Type.self, server: Server, path: API)
 
-                            completeHandler(Result.success(resultValue))
+                            completeHandler(Result.success(data:resultValue))
 
                         } catch {
                             BSKConsole.error(error)
-                            completeHandler(Result.fail(error))
+                            completeHandler(Result.fail(error:error))
                         }
                     } else {
                         let netError = BSKNetworkError(message: "返回的数据为空", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError:
                             nil, responseValue: response.value)
                         BSKConsole.error(netError, file: file, line: line)
-                        completeHandler(Result.fail(netError))
+                        completeHandler(Result.fail(error:netError))
                     }
                 }
             }
@@ -91,21 +91,21 @@ public class BSKNetwork<Type: Codable> {
                     let netError = BSKNetworkError(message: "网络请求失败", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError:
                         error, responseValue: response.value)
                     BSKConsole.error(netError, file: file, line: line)
-                    completeHandler(Result.fail(netError))
+                    completeHandler(Result.fail(error:netError))
                 } else {
                     if let value = response.value {
                         if let resultData = value as? Type {
-                            completeHandler(Result.success(resultData))
+                            completeHandler(Result.success(data:resultData))
                         } else {
                             let netError = BSKNetworkError(message: "API要求的返回类型是 Data 但BSKNetwork<Type>泛型给定的类型是 \(String(describing: Type.self))", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError: nil, responseValue: response.value)
                             BSKConsole.error(netError, file: file, line: line)
-                            completeHandler(Result.fail(netError))
+                            completeHandler(Result.fail(error:netError))
                         }
                     } else {
                         let netError = BSKNetworkError(message: "返回的数据为空", requestType: API.action, URL: url, parameters: parameters, headers: API.headers, extraError:
                             nil, responseValue: response.value)
                         BSKConsole.error(netError, file: file, line: line)
-                        completeHandler(Result.fail(netError))
+                        completeHandler(Result.fail(error:netError))
                     }
                 }
             }

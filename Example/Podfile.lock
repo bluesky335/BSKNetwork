@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.8.2)
   - BSKConsole (0.1.0)
-  - BSKNetwork (0.1.1):
+  - BSKNetwork (0.1.2):
     - Alamofire (~> 4.8.2)
     - BSKConsole (= 0.1.0)
 
@@ -21,8 +21,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BSKConsole: 85cc0ce59f0c1c5c770b0d6e9f140d108699e865
-  BSKNetwork: 4dac9f011dd077a00a72820c619a39132e3129c8
+  BSKNetwork: cf6421eb3c8f9c7a954a842fc172e3a85492ff56
 
 PODFILE CHECKSUM: 931b937013c05f3c10a61e8ab4eb652b641dc2aa
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.6.1
