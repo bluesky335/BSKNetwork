@@ -53,6 +53,16 @@ extension Decodable {
             }
             return nil
         }
+        
+        guard !(ajson is  NSNull) else {
+            let error = BSKCodeableError(message: "数据为空")
+            if onError != nil {
+                onError?(error)
+            } else {
+                BSKConsole.error(error)
+            }
+            return nil
+        }
 
         if let jsonStr = ajson as? String {
             return decode(from: jsonStr, onError: onError)
