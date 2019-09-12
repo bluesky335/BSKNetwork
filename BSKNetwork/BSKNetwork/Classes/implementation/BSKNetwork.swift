@@ -75,7 +75,7 @@ public class BSKNetwork<Type: Codable> {
                             completeHandler(Result.success(data: resultValue))
 
                         } catch {
-                            BSKConsole.error(error)
+                            BSKConsole.error(error, file: file, line: line)
                             completeHandler(Result.fail(error: error))
                         }
                     } else {
