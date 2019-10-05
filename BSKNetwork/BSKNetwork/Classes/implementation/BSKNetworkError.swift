@@ -27,9 +27,9 @@ public struct BSKNetworkError:Error,CustomStringConvertible {
     ///   - URL: 产生错误的URL
     ///   - parameters: 发生错误时的参数
     ///   - extraError: 额外的错误信息(一般是由Alamofire产生的错误)
-    public init(message:String,requestType:HTTPMethod, URL:String , parameters: [String : Any]? = nil,headers:[String:String]? = nil, extraError:Error? = nil, responseValue:Any?) {
+    public init(message:String,errCode:Int = -1 ,requestType:HTTPMethod, URL:String , parameters: [String : Any]? = nil,headers:[String:String]? = nil, extraError:Error? = nil, responseValue:Any?) {
         self.URL = URL
-        self.errorCode = -1
+        self.errorCode = errCode
         self.parameters = parameters
         self.responseValue = responseValue
         self.headers = headers
